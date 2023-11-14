@@ -20,6 +20,7 @@ public class Student  {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long student_id;
+	
     
     @Column
     private String firstName;

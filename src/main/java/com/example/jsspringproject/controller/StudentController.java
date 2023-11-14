@@ -51,7 +51,7 @@ public class StudentController {
 	@PutMapping("/employees/{id}")
 	public ResponseEntity<Student> updateEmployee(@PathVariable Long id, @RequestBody Student studentDetails){
 		Student student = studentRepository.findById(id)
-				.orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id :" + id));
+				.orElseThrow(() -> new ResourceNotFoundException("Employee not exist with  this id :" + id));
 		
 		student.setFirstName(studentDetails.getFirstName());
 		student.setLastName(studentDetails.getLastName());
