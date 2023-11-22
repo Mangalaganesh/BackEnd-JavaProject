@@ -35,6 +35,8 @@ public class Studentservice {
 	
 	
 	
+	//use this
+	
 	  public ResponseEntity<String> addStudent(Student student) {
 	        ResponseEntity<String> response;
 	        try {
@@ -61,7 +63,7 @@ public class Studentservice {
 	        }
 	    }
 	   
-	   
+	   //alternate
 	   
 	   private Student convertFormDataToStudent(Map<String, Object> formData) {
 	        Student student = new Student();
@@ -97,10 +99,11 @@ public class Studentservice {
 	        return student;
 	    }
 	   
+	   //use
 	   
 	   public List<Student> getAllStudents() {
 	        List<Student> students=StudentRepo.findAll();
-	        logger.info("All Students ====="+students);
+	        logger.info("All Students :"+students);
 	        return students;
 	    } 
 	   
@@ -132,7 +135,9 @@ public class Studentservice {
 	        return studentDTO;
 	    }
 	    
-	    public void update(Student std,long id) {
+	    //use
+	    
+	    public void update(Studentmodel std,long id) {
 	    	Optional<Student> singleStudent = StudentRepo.findById(id);
 	    	
 	    	   if (singleStudent.isPresent()) {
@@ -142,11 +147,11 @@ public class Studentservice {
 	    		   thatStudent.setLastName(std.getLastName());
 	    		   thatStudent.setEmail(std.getEmail());
 	    		   thatStudent.setPhone(std.getPhone());
-	    		   thatStudent.setDob(std.getDob());
-	   	     thatStudent.setGender(std.getGender());
+//	    		   thatStudent.setDob(std.getDob());
+//	   	     thatStudent.setGender(std.getGender());
 	   	  thatStudent.setAddress(std.getAddress());
 	   	  
-	       	 	StudentRepo.save(std);
+	       	 	StudentRepo.save(thatStudent);
 	    	   }else {
 	   	        System.out.println("Student not found with  this id: " + id);
 	   	    }

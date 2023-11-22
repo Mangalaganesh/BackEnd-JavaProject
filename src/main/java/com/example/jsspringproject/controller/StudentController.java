@@ -65,6 +65,7 @@ public class StudentController {
         Map<String, Map<String, Object>> formDataMap = objectMapper.readValue(formdata, new TypeReference<Map<String, Map<String, Object>>>() {});
         
         Student student =new Student();
+        
         Map<String, Object> form1data = formDataMap.get("userInfo");
         Map<String, Object> form2data=(Map<String, Object>)formDataMap.get("academicInfo");
         
@@ -84,7 +85,7 @@ public class StudentController {
       student.setEmail((String)form1data.get("email"));
       student.setPhone((String)form1data.get("phone"));
       student.setAddress((String)form1data.get("address"));
-      student.setDob((String)form1data.get("dob"));
+      student.setDob((String)form2data.get("dob"));
       student.setGender((String)form1data.get("gender"));
       student.setCourses(courses);
       
@@ -199,6 +200,7 @@ public class StudentController {
         return  new ResponseEntity<>(studentmodels,HttpStatus.OK);
     }
     
+    //not use
     
     @GetMapping("//")
     public ResponseEntity<List<Studentmodel>> findstudent() {
@@ -207,7 +209,7 @@ public class StudentController {
     
     
     @PutMapping("update/{id}")
-	public ResponseEntity<String> updateEmployee(@RequestBody Student studentdata, @PathVariable int id) {
+	public ResponseEntity<String> updateEmployee(@RequestBody Studentmodel studentdata, @PathVariable int id) {
     	try {
     		studentService.update(studentdata, id);
        	 return ResponseEntity.status(HttpStatusCode.valueOf(200)).body("Student_detail Updated Successfully");
@@ -221,12 +223,16 @@ public class StudentController {
 		
 	}
     
+    //not use
+    
     @GetMapping("getbyid/{id}")
 	public Optional<Student> getStudentById(@PathVariable long id) {
 		Optional<Student> std = studentService.getById(id);
 		System.out.println("Student_detail " + std);
 		return std;
 	}
+    
+    
     
     @DeleteMapping("delete/{id}")
 	public void deleteEmployee(@PathVariable long id) {

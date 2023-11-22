@@ -45,7 +45,7 @@ public class Student  {
 	    private String email;
 
 
-	    @Column(name = "file_data", columnDefinition = "BLOB", length = 10485760) // Adjust the length accordingly
+	    @Column(name = "file_data", columnDefinition = "BLOB", length = 10485760) 
 	    private byte[] fileData;
 
 	    
